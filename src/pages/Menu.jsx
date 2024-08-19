@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DialogComponent } from "@syncfusion/ej2-react-popups";
-import { TextBox } from "@syncfusion/ej2-react-inputs";
+import { TextBoxComponent, TextAreaComponent } from '@syncfusion/ej2-react-inputs';
 import { menuItems as initialMenuItems } from "../data/data";
 
 const Menu = () => {
@@ -60,7 +60,9 @@ const Menu = () => {
   };
 
   const handleNewItemChange = (e) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    const { value } = e;
+    console.log(name, value)
     setNewItemInfo({ ...newItemInfo, [name]: value });
   };
 
@@ -82,10 +84,10 @@ const Menu = () => {
   return (
     <div className="flex justify-center p-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-12">
-        <div className="e-card e-card-horizontal rounded-lg shadow-lg flex items-center justify-center bg-gray-200 cursor-pointer hover:bg-gray-300 transition-colors">
+        <div onClick={openAddNewItemDialog}className="e-card e-card-horizontal rounded-lg shadow-lg flex items-center justify-center bg-gray-200 cursor-pointer hover:bg-gray-300 transition-colors">
           <button
             className="p-4 text-center text-lg font-semibold text-gray-700"
-            onClick={openAddNewItemDialog}
+            
           >
             Add New Item
           </button>
@@ -228,7 +230,7 @@ const Menu = () => {
         >
           <div style={{ padding: "10px" }}>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="title"
                 value={newItemInfo.title}
                 placeholder="Title"
@@ -237,7 +239,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="price"
                 value={newItemInfo.price}
                 placeholder="Price"
@@ -246,7 +248,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="num_sold"
                 value={newItemInfo.num_sold}
                 placeholder="Number Sold"
@@ -255,7 +257,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="in_stock"
                 value={newItemInfo.in_stock}
                 placeholder="In Stock"
@@ -264,7 +266,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="discount"
                 value={newItemInfo.discount}
                 placeholder="Discount"
@@ -273,7 +275,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <input
+              <TextBoxComponent
                 name="label"
                 value={newItemInfo.label}
                 placeholder="Label"
@@ -282,7 +284,7 @@ const Menu = () => {
               />
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <textarea
+              <TextAreaComponent
                 name="description"
                 value={newItemInfo.description}
                 placeholder="Description"
